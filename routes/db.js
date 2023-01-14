@@ -1,5 +1,6 @@
 const fb = require('express').Router();
 const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const uuid = require('../helpers/uuid');
 
 // get route for the notes in db.json
 fb.get('/', (req, res) => {
@@ -19,9 +20,11 @@ fb.post('/', (req, res) => {
   // If all the required properties are present
   if (title && text) {
     // Variable for the object we will save
+    
     const newNote = {
+      id: uuid(),
       title,
-      text,
+      text,      
     };
 
     readAndAppend(newNote, './db/db.json');
