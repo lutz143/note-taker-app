@@ -5,7 +5,7 @@ const notesRouter = require('./db');
 
 const app = express();
 
-app.use('/db', notesRouter);
+app.use('/api/notes', notesRouter);
 
 
 module.exports = app;
