@@ -1,37 +1,17 @@
 [
     {
-        "id": "vc4twq",
-        "title": "Test Title",
-        "text": "Test text"
+        "id": "7bf7",
+        "title": "Make Chili",
+        "text": "Be sure to make it extra spicy"
     },
     {
-        "id": "5rln",
-        "title": "New Note1",
-        "text": "Hello World"
-    },
-    {
-        "id": "a435rgn",
-        "title": "New Note2",
-        "text": "Run to Grocery"
-    },
-    {
-        "id": "atecm32",
-        "title": "Hello",
-        "text": "Just a new notes here."
-    },
-    {
-        "id": "dalkt",
-        "title": "Wine",
-        "text": "Remember to chill the wine before tonight."
-    },
-    {
-        "id": "60b0",
-        "title": "New Note2",
-        "text": "Run to Grocery"
-    },
-    {
-        "id": "24d7",
+        "id": "5add",
         "title": "Vacuum",
-        "text": "Sweep the stairs"
+        "text": "Sweep the stairs!"
+    },
+    {
+        "id": "43f9",
+        "title": "Code",
+        "text": "Have some fun coding today"
     }
 ]

@@ -1,6 +1,8 @@
 const fb = require('express').Router();
-const { readFromFile, readAndAppend } = require('../helpers/fsUtils');
+const { readFromFile, readAndAppend, writeToFile, overwriteFile } = require('../helpers/fsUtils');
 const uuid = require('../helpers/uuid');
+let notes = require('../db/db.json');
+const { writeFile } = require('xlsx');
 
 // get route for the notes in db.json
 fb.get('/', (req, res) => {
@@ -37,6 +39,24 @@ fb.post('/', (req, res) => {
     res.json(response);
   } else {
     res.json('Error in posting note');
+  }
+});
+
+fb.delete('/:id', (req, res) => {
+  // Log that a DELETE request was received
+  console.info(`${req.method} request received to delete a note!`);
+  // Destructuring assignment for the items in req.body
+  const { id } = req.params;
+
+  const deleted = notes.find(note => note.id === id);
+
+  // If all the required properties are present
+  if (deleted) {
+    notes = notes.filter(note => note.id !== id);
+    res.status(200).json(`Deleted a Note`);
+    overwriteFile(notes, './db/db.json');
+  } else {
+    res.status(404).json({ message: "Note you are looking for does not exist"})
   }
 });
 

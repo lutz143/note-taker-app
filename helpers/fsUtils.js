@@ -31,4 +31,15 @@ const readAndAppend = (content, file) => {
   });
 };
 
-module.exports = { readFromFile, writeToFile, readAndAppend };
+const overwriteFile = (content, file) => {
+  fs.readFile(file, 'utf8', (err, data) => {
+    if (err) {
+      console.error(err);
+    } else {
+      const parsedData = JSON.parse(data);
+      writeToFile(file, content);
+    }
+  });
+};
+
+module.exports = { readFromFile, writeToFile, readAndAppend, overwriteFile };
