@@ -18,7 +18,7 @@ app.use('/api/notes', api);
 app.use(express.static('public'));
 
 // get index.html or the route for the homepage
-app.get('*', (req, res) =>
+app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
