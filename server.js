@@ -5,7 +5,7 @@ const api = require('./routes/db.js');
 let notes = require('./db/db.json');
 
 // create port for local listening while in development
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT;
 
 const app = express();
 
