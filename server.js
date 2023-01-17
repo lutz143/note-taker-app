@@ -5,7 +5,7 @@ const api = require('./routes/db.js');
 let notes = require('./db/db.json');
 
 // create port for local listening while in development
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -21,11 +21,6 @@ app.use(express.static('public'));
 app.get('/', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
-
-// Wildcard route to direct users to a 404 page
-// app.get('*', (req, res) =>
-//   res.sendFile(path.join(__dirname, '/public/index.html'))
-// );
 
 // GET request for notes page
 app.get('/notes', (req, res) =>
@@ -45,22 +40,10 @@ app.get('/api/notes/:id', (req, res) => {
   }
 });
 
-// app.delete('/api/notes/:id', (req, res) => {
-//   // Log that a DELETE request was received
-//   console.info(`${req.method} request received to delete a note!`);
-//   // Destructuring assignment for the items in req.body
-//   const { id } = req.params;
-
-//   const deleted = notes.find(note => note.id === id);
-
-//   // If all the required properties are present
-//   if (deleted) {
-//     notes = notes.filter(note => note.id !== id);
-//     res.status(200).json(deleted);
-//   } else {
-//     res.status(404).json({ message: "Note you are looking for does not exist"})
-//   }
-// });
+// wildcard route to direct users to main page
+app.get('*', (req, res) =>
+  res.sendFile(path.join(__dirname, 'public/index.html'))
+);
 
 // listen to const PORT
 app.listen(PORT, () =>
