@@ -5,7 +5,7 @@ const api = require('./routes/db.js');
 let notes = require('./db/db.json');
 
 // create port for local listening while in development
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -18,7 +18,7 @@ app.use('/api/notes', api);
 app.use(express.static('public'));
 
 // get index.html or the route for the homepage
-app.get('/', (req, res) =>
+app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, '/public/index.html'))
 );
 
