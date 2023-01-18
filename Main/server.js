@@ -42,7 +42,7 @@ app.get('/api/notes/:id', (req, res) => {
 
 // wildcard route to direct users to main page
 app.get('*', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+  res.sendFile(path.join(__dirname, 'public/index.html'))
 );
 
 // listen to const PORT
