@@ -42,7 +42,7 @@ fb.post('/', (req, res) => {
   }
 });
 
-fb.delete('/:id', (req, res) => {
+fb.delete('notes/:id', (req, res) => {
   // Log that a DELETE request was received
   console.info(`${req.method} request received to delete a note!`);
   // Destructuring assignment for the items in req.body
@@ -56,7 +56,7 @@ fb.delete('/:id', (req, res) => {
     res.status(200).json(`Deleted a Note`);
     overwriteFile(notes, './db/db.json');
   } else {
-    res.status(404).json({ message: "Note you are looking for does not exist"})
+    res.status(401).json({ message: "Note you are looking for does not exist"})
   }
 });
 
