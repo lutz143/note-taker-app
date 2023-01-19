@@ -45,6 +45,24 @@ app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/index.html'))
 );
 
+app.delete('/api/notes/:id', (req, res) => {
+  // Log that a DELETE request was received
+  console.info(`${req.method} request received to delete a note!`);
+  // Destructuring assignment for the items in req.body
+  const { id } = req.params;
+
+  const deleted = notes.find(note => note.id === id);
+
+  // If all the required properties are present
+  if (deleted) {
+    notes = notes.filter(note => note.id !== id);
+    res.status(200).json(`Deleted a Note`);
+    overwriteFile(notes, './db/db.json');
+  } else {
+    res.status(401).json({ message: "Note you are looking for does not exist"})
+  }
+});
+
 // listen to const PORT
 app.listen(PORT, () =>
   console.log(`App listening at http://localhost:${PORT}`)
