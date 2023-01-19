@@ -42,7 +42,20 @@ fb.post('/', (req, res) => {
   }
 });
 
-fb.delete('notes/:id', (req, res) => {
+// GET Route for a specific note
+tips.get('/:id', (req, res) => {
+  const noteId = req.params.id;
+  readFromFile('../db/db.json')
+    .then((data) => JSON.parse(data))
+    .then((json) => {
+      const result = json.filter((note) => note.id === noteId);
+      return result.length > 0
+        ? res.json(result)
+        : res.json('No note with that ID');
+    });
+});
+
+fb.delete('/:id', (req, res) => {
   // Log that a DELETE request was received
   console.info(`${req.method} request received to delete a note!`);
   // Destructuring assignment for the items in req.body
