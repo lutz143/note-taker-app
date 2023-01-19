@@ -45,7 +45,7 @@ fb.post('/', (req, res) => {
 // GET Route for a specific note
 fb.get('/:id', (req, res) => {
   const noteId = req.params.id;
-  readFromFile('../db/db.json')
+  readFromFile('./db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
       const result = json.filter((note) => note.id === noteId);
