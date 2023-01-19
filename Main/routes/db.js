@@ -43,7 +43,7 @@ fb.post('/', (req, res) => {
 });
 
 // GET Route for a specific note
-tips.get('/:id', (req, res) => {
+fb.get('/:id', (req, res) => {
   const noteId = req.params.id;
   readFromFile('../db/db.json')
     .then((data) => JSON.parse(data))
