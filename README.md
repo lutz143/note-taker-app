@@ -23,6 +23,9 @@ If your README is long, add a table of contents to make it easy for users to fin
 
 ---
 
+![image](./Main/public/assets/img/LandingPage.JPG)
+![image](./Main/public/assets/img/NoteTakerPage.JPG)
+
 ## How to Contribute
 * Feel free to reach out to me if you have any ideas to contribute to this project! Contact info below.
 
